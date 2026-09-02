@@ -1,10 +1,6 @@
-import {
-  useState
-} from "react";
+import { useState } from "react";
 
-import {
-  Box
-} from "@mui/material";
+import { Box } from "@mui/material";
 
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
@@ -29,47 +25,36 @@ export default function AppLayout({
   onProfile,
   themeMode,
   onThemeChange,
-  children
+  children,
 }: Props) {
-  const [sidebarOpen, setSidebarOpen] =
-    useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <Box
       sx={{
         minHeight: "100vh",
         bgcolor: "background.default",
-        color: "text.primary"
+        color: "text.primary",
       }}
     >
       <TopBar
         title={title}
-        onMenu={() =>
-          setSidebarOpen(true)
-        }
+        onMenu={() => setSidebarOpen(true)}
         onLogout={onLogout}
-        onSettings={() =>
-          onNavigate("settings")
-        }
-        onProfile={() =>
-          onProfile()
-        }
+        onSettings={() => onNavigate("settings")}
+        onProfile={() => onProfile()}
         themeMode={themeMode}
         onThemeChange={onThemeChange}
       />
 
       <Sidebar
         open={sidebarOpen}
-        onClose={() =>
-          setSidebarOpen(false)
-        }
+        onClose={() => setSidebarOpen(false)}
         currentPage={page}
         onNavigate={onNavigate}
       />
 
-      <Box className="page-content">
-        {children}
-      </Box>
+      <Box className="page-content">{children}</Box>
     </Box>
   );
 }

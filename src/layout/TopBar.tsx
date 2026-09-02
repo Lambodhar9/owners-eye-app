@@ -1,13 +1,11 @@
-import {
-  useState
-} from "react";
+import { useState } from "react";
 
 import {
   AccountCircleRounded,
   LogoutRounded,
   MenuRounded,
   SettingsBrightnessRounded,
-  SettingsRounded
+  SettingsRounded,
 } from "@mui/icons-material";
 
 import {
@@ -19,12 +17,10 @@ import {
   MenuItem,
   Select,
   Toolbar,
-  Typography
+  Typography,
 } from "@mui/material";
 
-import {
-  ThemeMode
-} from "../theme/ThemeSettings";
+import { ThemeMode } from "../theme/ThemeSettings";
 
 interface Props {
   title: string;
@@ -43,10 +39,9 @@ export default function TopBar({
   onSettings,
   onProfile,
   themeMode,
-  onThemeChange
+  onThemeChange,
 }: Props) {
-  const [anchor, setAnchor] =
-    useState<null | HTMLElement>(null);
+  const [anchor, setAnchor] = useState<null | HTMLElement>(null);
 
   return (
     <AppBar
@@ -57,28 +52,18 @@ export default function TopBar({
         bgcolor: "background.paper",
         color: "text.primary",
         borderBottom: 1,
-        borderColor: "divider"
+        borderColor: "divider",
       }}
     >
       <Toolbar>
-        <IconButton
-          onClick={onMenu}
-          sx={{ mr: 1 }}
-        >
+        <IconButton onClick={onMenu} sx={{ mr: 1 }}>
           <MenuRounded />
         </IconButton>
 
         <Box sx={{ flex: 1 }}>
-          <Typography
-            fontWeight={900}
-          >
-            {title}
-          </Typography>
+          <Typography fontWeight={900}>{title}</Typography>
 
-          <Typography
-            fontSize={11}
-            color="text.secondary"
-          >
+          <Typography fontSize={11} color="text.secondary">
             Sri Lakshmi Cinemas
           </Typography>
         </Box>
@@ -89,16 +74,14 @@ export default function TopBar({
             mr: 1,
             display: "flex",
             alignItems: "center",
-            color: "text.primary"
+            color: "text.primary",
           }}
         >
           <SettingsBrightnessRounded />
           <Select
             variant="standard"
             value={themeMode}
-            onChange={(event) =>
-              onThemeChange(event.target.value as ThemeMode)
-            }
+            onChange={(event) => onThemeChange(event.target.value as ThemeMode)}
             inputProps={{ "aria-label": "Theme" }}
             sx={{
               ml: 0.5,
@@ -108,8 +91,8 @@ export default function TopBar({
                 py: 0,
                 pl: 0.5,
                 pr: "20px !important",
-                color: "text.primary"
-              }
+                color: "text.primary",
+              },
             }}
           >
             <MenuItem value="light">Light</MenuItem>
@@ -118,15 +101,11 @@ export default function TopBar({
           </Select>
         </Box>
 
-        <IconButton
-          onClick={(event) =>
-            setAnchor(event.currentTarget)
-          }
-        >
+        <IconButton onClick={(event) => setAnchor(event.currentTarget)}>
           <Avatar
             sx={{
               width: 36,
-              height: 36
+              height: 36,
             }}
           >
             K
@@ -136,9 +115,7 @@ export default function TopBar({
         <Menu
           anchorEl={anchor}
           open={Boolean(anchor)}
-          onClose={() =>
-            setAnchor(null)
-          }
+          onClose={() => setAnchor(null)}
         >
           <MenuItem
             onClick={() => {
@@ -146,10 +123,7 @@ export default function TopBar({
               setAnchor(null);
             }}
           >
-            <SettingsRounded
-              fontSize="small"
-              sx={{ mr: 1 }}
-            />
+            <SettingsRounded fontSize="small" sx={{ mr: 1 }} />
             Settings
           </MenuItem>
 
@@ -159,11 +133,7 @@ export default function TopBar({
               setAnchor(null);
             }}
           >
-            <AccountCircleRounded
-              fontSize="small"
-              sx={{ mr: 1 }}
-            />
-
+            <AccountCircleRounded fontSize="small" sx={{ mr: 1 }} />
             My Profile
           </MenuItem>
 
@@ -173,10 +143,7 @@ export default function TopBar({
               onLogout();
             }}
           >
-            <LogoutRounded
-              fontSize="small"
-              sx={{ mr: 1 }}
-            />
+            <LogoutRounded fontSize="small" sx={{ mr: 1 }} />
             Logout
           </MenuItem>
         </Menu>

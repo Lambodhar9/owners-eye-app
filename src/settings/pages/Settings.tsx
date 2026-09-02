@@ -9,43 +9,30 @@ import {
   Stack,
   Switch,
   TextField,
-  Typography
+  Typography,
 } from "@mui/material";
 
 export default function Settings() {
-  const [whatsapp, setWhatsapp] =
-    useState(true);
+  const [whatsapp, setWhatsapp] = useState(true);
 
-  const [email, setEmail] =
-    useState(true);
+  const [email, setEmail] = useState(true);
 
-  const [saved, setSaved] =
-    useState(false);
+  const [saved, setSaved] = useState(false);
 
   return (
     <>
-      <Typography
-        variant="h4"
-        fontWeight={900}
-      >
+      <Typography variant="h4" fontWeight={900}>
         Settings
       </Typography>
 
-      <Typography
-        color="text.secondary"
-        sx={{ mb: 3 }}
-      >
+      <Typography color="text.secondary" sx={{ mb: 3 }}>
         Configure your theatre and application preferences
       </Typography>
 
       <Stack spacing={2}>
         <Card>
           <CardContent>
-            <Typography
-              variant="h6"
-              fontWeight={900}
-              sx={{ mb: 2 }}
-            >
+            <Typography variant="h6" fontWeight={900} sx={{ mb: 2 }}>
               Theatre Profile
             </Typography>
 
@@ -56,27 +43,16 @@ export default function Settings() {
                 fullWidth
               />
 
-              <TextField
-                label="City"
-                defaultValue="Hyderabad"
-                fullWidth
-              />
+              <TextField label="City" defaultValue="Hyderabad" fullWidth />
 
-              <TextField
-                label="Owner Name"
-                defaultValue="Kumar"
-                fullWidth
-              />
+              <TextField label="Owner Name" defaultValue="Kumar" fullWidth />
             </Stack>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent>
-            <Typography
-              variant="h6"
-              fontWeight={900}
-            >
+            <Typography variant="h6" fontWeight={900}>
               Notifications
             </Typography>
 
@@ -87,23 +63,16 @@ export default function Settings() {
               sx={{ py: 2 }}
             >
               <div>
-                <Typography fontWeight={700}>
-                  WhatsApp Daily Report
-                </Typography>
+                <Typography fontWeight={700}>WhatsApp Daily Report</Typography>
 
-                <Typography
-                  fontSize={13}
-                  color="text.secondary"
-                >
+                <Typography fontSize={13} color="text.secondary">
                   Send daily collection to owner
                 </Typography>
               </div>
 
               <Switch
                 checked={whatsapp}
-                onChange={() =>
-                  setWhatsapp(!whatsapp)
-                }
+                onChange={() => setWhatsapp(!whatsapp)}
               />
             </Stack>
 
@@ -116,24 +85,14 @@ export default function Settings() {
               sx={{ py: 2 }}
             >
               <div>
-                <Typography fontWeight={700}>
-                  Email Reports
-                </Typography>
+                <Typography fontWeight={700}>Email Reports</Typography>
 
-                <Typography
-                  fontSize={13}
-                  color="text.secondary"
-                >
+                <Typography fontSize={13} color="text.secondary">
                   Receive scheduled reports
                 </Typography>
               </div>
 
-              <Switch
-                checked={email}
-                onChange={() =>
-                  setEmail(!email)
-                }
-              />
+              <Switch checked={email} onChange={() => setEmail(!email)} />
             </Stack>
           </CardContent>
         </Card>
@@ -142,16 +101,14 @@ export default function Settings() {
           variant="contained"
           onClick={() => setSaved(true)}
           sx={{
-            alignSelf: "flex-start"
+            alignSelf: "flex-start",
           }}
         >
           Save Settings
         </Button>
 
         {saved && (
-          <Alert severity="success">
-            Settings saved successfully.
-          </Alert>
+          <Alert severity="success">Settings saved successfully.</Alert>
         )}
       </Stack>
     </>
