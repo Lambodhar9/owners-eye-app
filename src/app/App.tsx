@@ -51,7 +51,6 @@ export default function App() {
 
   const [page, setPage] = useState<Page>("dashboard");
 
-  const [darkMode, setDarkMode] = useState(false);
   const [themeMode, setThemeMode] = useState<ThemeMode>(() => {
     const saved = localStorage.getItem("cinema-theme");
 
@@ -73,6 +72,11 @@ export default function App() {
       createTheme({
         palette: {
           mode: resolvedMode,
+
+          background: {
+            default: resolvedMode === "dark" ? "#12161C" : "#F5F7FB",
+            paper: resolvedMode === "dark" ? "#1B212A" : "#FFFFFF",
+          },
 
           primary: {
             main: "#3155D9",
@@ -153,7 +157,7 @@ export default function App() {
       case "profile":
         return <MyProfile />;
       case "settings":
-        return <Settings themeMode={themeMode} onThemeChange={changeTheme} />;
+        return <Settings />;
 
       default:
         return <Dashboard onNavigate={(value) => setPage(value as Page)} />;
@@ -168,6 +172,8 @@ export default function App() {
         onNavigate={(value) => setPage(value as Page)}
         onLogout={() => setAuthenticated(false)}
         onProfile={() => setPage("profile")}
+        themeMode={themeMode}
+        onThemeChange={changeTheme}
       >
         {renderPage()}
       </AppLayout>

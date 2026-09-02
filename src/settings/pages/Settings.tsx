@@ -12,21 +12,7 @@ import {
   Typography
 } from "@mui/material";
 
-import ThemeSettings, {
-  ThemeMode
-} from "../../theme/ThemeSettings";
-
-interface Props {
-  themeMode: ThemeMode;
-  onThemeChange: (
-    mode: ThemeMode
-  ) => void;
-}
-
-export default function Settings({
-  themeMode,
-  onThemeChange
-}: Props) {
+export default function Settings() {
   const [whatsapp, setWhatsapp] =
     useState(true);
 
@@ -53,11 +39,6 @@ export default function Settings({
       </Typography>
 
       <Stack spacing={2}>
-        <ThemeSettings
-          mode={themeMode}
-          onChange={onThemeChange}
-        />
-
         <Card>
           <CardContent>
             <Typography

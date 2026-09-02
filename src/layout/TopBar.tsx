@@ -6,6 +6,7 @@ import {
   AccountCircleRounded,
   LogoutRounded,
   MenuRounded,
+  SettingsBrightnessRounded,
   SettingsRounded
 } from "@mui/icons-material";
 
@@ -16,9 +17,14 @@ import {
   IconButton,
   Menu,
   MenuItem,
+  Select,
   Toolbar,
   Typography
 } from "@mui/material";
+
+import {
+  ThemeMode
+} from "../theme/ThemeSettings";
 
 interface Props {
   title: string;
@@ -26,6 +32,8 @@ interface Props {
   onLogout: () => void;
   onSettings: () => void;
   onProfile: () => void;
+  themeMode: ThemeMode;
+  onThemeChange: (mode: ThemeMode) => void;
 }
 
 export default function TopBar({
@@ -33,7 +41,9 @@ export default function TopBar({
   onMenu,
   onLogout,
   onSettings,
-  onProfile
+  onProfile,
+  themeMode,
+  onThemeChange
 }: Props) {
   const [anchor, setAnchor] =
     useState<null | HTMLElement>(null);
@@ -44,8 +54,10 @@ export default function TopBar({
       color="inherit"
       elevation={0}
       sx={{
-        borderBottom:
-          "1px solid #E5E7EB"
+        bgcolor: "background.paper",
+        color: "text.primary",
+        borderBottom: 1,
+        borderColor: "divider"
       }}
     >
       <Toolbar>
@@ -69,6 +81,41 @@ export default function TopBar({
           >
             Sri Lakshmi Cinemas
           </Typography>
+        </Box>
+
+        <Box
+          title="Change theme"
+          sx={{
+            mr: 1,
+            display: "flex",
+            alignItems: "center",
+            color: "text.primary"
+          }}
+        >
+          <SettingsBrightnessRounded />
+          <Select
+            variant="standard"
+            value={themeMode}
+            onChange={(event) =>
+              onThemeChange(event.target.value as ThemeMode)
+            }
+            inputProps={{ "aria-label": "Theme" }}
+            sx={{
+              ml: 0.5,
+              minWidth: 0,
+              color: "text.primary",
+              "& .MuiSelect-select": {
+                py: 0,
+                pl: 0.5,
+                pr: "20px !important",
+                color: "text.primary"
+              }
+            }}
+          >
+            <MenuItem value="light">Light</MenuItem>
+            <MenuItem value="dark">Dark</MenuItem>
+            <MenuItem value="system">System</MenuItem>
+          </Select>
         </Box>
 
         <IconButton
