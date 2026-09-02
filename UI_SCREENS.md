@@ -1,0 +1,12 @@
+# Rich UI Screens
+- Login
+- Dashboard
+- Collection
+- Shows
+- Theatres
+- Users + Add User
+- Roles & Permissions
+- Reports (From/To Date)
+- AI Insights
+- Alerts
+- Settings
